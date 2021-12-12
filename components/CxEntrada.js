@@ -1,47 +1,45 @@
-import React from 'react'
-import { StyleSheet, Image, Text, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, View, Image, Text, FlatList } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
 export default function CxEntrada() {
+  const [emails, setEmails] = useState([])
+
+  useEffect(function () {
+    async function getData() {
+      const response = await fetch('https://mobile.ect.ufrn.br:3002/emails')
+      const emailServidor = await response.json()
+      setEmails(emailServidor)
+    }
+    getData()
+  }, [])
+
+  function renderItem({ item }) {
+    return (
+      //console.log(item.star),
+      <View style={styles.emails}>
+        <Image style={styles.imgEmail} source={{ uri: item.picture }} />
+        <View style={styles.email}>
+          <Text style={styles.autor}>{item.to}</Text>
+          <Text style={styles.titulo}>{item.tittle}</Text>
+          <Text style={styles.resumo}>Resumo</Text>
+        </View>
+        <View style={styles.horaStar}>
+          <Text style={styles.hora}>{item.time}</Text>
+          {item.star == true ? (
+            <FontAwesome5 name={'star'} solid size={18} color="#6495ed" />
+          ) : (
+            <FontAwesome5 name={'star'} size={18} color="#b9b9b9" />
+          )}
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.cxEntrada}>
       <Text style={styles.textoCxEntr}>Todas as Cx. entrada</Text>
-      <View style={styles.emails}>
-        <Image style={styles.imgEmail} source={require('../assets/images/userLogado.jpg')} />
-        <View style={styles.email}>
-          <Text style={styles.autor}>Autor</Text>
-          <Text style={styles.titulo}>Titulo</Text>
-          <Text style={styles.resumo}>Resumo</Text>
-        </View>
-        <View style={styles.horaStar}>
-          <Text style={styles.hora}>Hora</Text>
-          <FontAwesome5 name="star" size={18} color="red" />
-        </View>
-      </View>
-      <View style={styles.emails}>
-        <Image style={styles.imgEmail} source={require('../assets/images/userLogado.jpg')} />
-        <View style={styles.email}>
-          <Text style={styles.autor}>Autor</Text>
-          <Text style={styles.titulo}>Titulo</Text>
-          <Text style={styles.resumo}>Resumo</Text>
-        </View>
-        <View style={styles.horaStar}>
-          <Text style={styles.hora}>Hora</Text>
-          <FontAwesome5 name="star" size={18} color="red" />
-        </View>
-      </View>
-      <View style={styles.emails}>
-        <Image style={styles.imgEmail} source={require('../assets/images/userLogado.jpg')} />
-        <View style={styles.email}>
-          <Text style={styles.autor}>Autor</Text>
-          <Text style={styles.titulo}>Titulo</Text>
-          <Text style={styles.resumo}>Resumo</Text>
-        </View>
-        <View style={styles.horaStar}>
-          <Text style={styles.hora}>Hora</Text>
-          <FontAwesome5 name="star" size={18} color="red" />
-        </View>
-      </View>
+      <FlatList data={emails} renderItem={renderItem} keyExtractor={item => item.id} />
     </View>
   )
 }
@@ -60,10 +58,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   imgEmail: {
-    height: 45,
-    width: 45,
+    height: 40,
+    width: 40,
     borderRadius: 25,
-    marginTop: 15,
+    marginTop: 20,
     marginRight: 15,
     backgroundColor: 'purple'
   },
@@ -74,12 +72,12 @@ const styles = StyleSheet.create({
   },
   autor: {
     color: '#b9b9b9',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   titulo: {
     color: '#b9b9b9',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold'
   },
   resumo: {
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   horaStar: {
-    width: 50,
+    width: 60,
     marginTop: 15,
     marginBottom: 20,
     justifyContent: 'space-between',
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
   },
   hora: {
     color: '#b9b9b9',
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold'
   }
 })
