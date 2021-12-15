@@ -1,29 +1,20 @@
 import React from 'react'
-import { StyleSheet, Image, Text, View } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
-import Constants from 'expo-constants'
-import { FontAwesome5 } from '@expo/vector-icons'
 
-import Busca from './components/Busca'
-import Footer from './components/Footer'
-import CxEntrada from './components/CxEntrada'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+
+import HomeScreen from './screens/HomeScreen'
+import EmailScreen from './screens/EmailScreen'
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" backgroundColor="#1f1f1f" />
-      <Busca />
-      <CxEntrada />
-      <Footer />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EmailScreen" component={EmailScreen} options={{ title: 'Email' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1f1f1f',
-    color: 'white',
-    marginTop: Constants.statusBarHeight
-  }
-})

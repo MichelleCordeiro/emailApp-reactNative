@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Image, Text, FlatList } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
-export default function CxEntrada() {
+export default function CxEntrada({ navigation }) {
   const [emails, setEmails] = useState([])
 
   useEffect(function () {
     async function getData() {
-      const response = await fetch('https://mobile.ect.ufrn.br:3002/emails')
+      //const response = await fetch('https://mobile.ect.ufrn.br:3002/emails')
+      const response = await fetch('https://michellecordeiro.github.io/json/Data/emails.json')
       const emailServidor = await response.json()
       setEmails(emailServidor)
     }
@@ -17,7 +18,10 @@ export default function CxEntrada() {
   function renderItem({ item }) {
     return (
       //console.log(item.star),
-      <View style={styles.emails}>
+      <View
+        style={styles.emails}
+        onStartShouldSetResponder={() => navigation.navigate('EmailScreen')}
+      >
         <Image style={styles.imgEmail} source={{ uri: item.picture }} />
         <View style={styles.email}>
           <Text style={styles.autor}>{item.to}</Text>
