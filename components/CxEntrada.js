@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Image, Text, FlatList } from 'react-native'
+import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
 export default function CxEntrada({ navigation }) {
@@ -7,9 +7,10 @@ export default function CxEntrada({ navigation }) {
 
   useEffect(function () {
     async function getData() {
-      //const response = await fetch('https://mobile.ect.ufrn.br:3002/emails')
-      const response = await fetch('https://michellecordeiro.github.io/json/Data/emails.json')
+      const response = await fetch('https://mobile.ect.ufrn.br:3002/emails')
+      //const response = await fetch('https://michellecordeiro.github.io/json/Data/emails.json')
       const emailServidor = await response.json()
+      //console.log(emails)
       setEmails(emailServidor)
     }
     getData()
@@ -18,9 +19,9 @@ export default function CxEntrada({ navigation }) {
   function renderItem({ item }) {
     return (
       //console.log(item.star),
-      <View
+      <TouchableOpacity
         style={styles.emails}
-        onStartShouldSetResponder={() => navigation.navigate('EmailScreen')}
+        onPress={() => navigation.navigate('EmailScreen', { id: item.id })}
       >
         <Image style={styles.imgEmail} source={{ uri: item.picture }} />
         <View style={styles.email}>
@@ -36,7 +37,7 @@ export default function CxEntrada({ navigation }) {
             <FontAwesome5 name={'star'} size={18} color="#b9b9b9" />
           )}
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginTop: 20,
     marginRight: 15,
-    backgroundColor: 'purple'
+    backgroundColor: 'gray'
   },
   email: {
     width: 250,
