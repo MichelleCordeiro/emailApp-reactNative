@@ -4,19 +4,9 @@ App created in mobile app development class.
 
 <br>
 
-## 📬 Stacks:
+<img src="https://i.postimg.cc/FRLZ62Jk/Gmail-Stack-Cx-Entrada.png" alt="Inbox Stack" width="345" /> <img src="https://i.postimg.cc/PJbMXYyt/Gmail-Stack-Email.pngg" alt="E-**mail** Stack" width="340" />
 
-✔️ Inbox
-
-✔️ E-mail
-
-❌ Compose
-
-❌ Login
-
-❌ Logout
-
-<br><br>
+<br>
 
 ## 💻 &nbsp;Technologies & Tool:
 
@@ -31,6 +21,27 @@ App created in mobile app development class.
 
 <br><br>
 
+## 📬 Stacks:
+
+✔️ Inbox
+
+✔️ E-mail
+
+❌ Compose
+
+❌ Login
+
+❌ Logout
+
+<br><br>
+
+## 🎥 Video
+
+[![Watch the video](https://i.postimg.cc/g2Lz8pvW/printscreen.png)](https://youtu.be/9wzoWbnwTLM)
+
+<br>
+
+
 ## 🚀 &nbsp;Future & Implementation:
 
 - [ ] Search
@@ -40,6 +51,3 @@ App created in mobile app development class.
 - [ ] Reply all button
 - [ ] Share button
 
-<br>
-
-<img src="https://i.postimg.cc/FRLZ62Jk/Gmail-Stack-Cx-Entrada.png" alt="Inbox Stack" width="345" /> <img src="https://i.postimg.cc/PJbMXYyt/Gmail-Stack-Email.pngg" alt="E-**mail** Stack" width="340" />
