@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   titulo: {
     color: '#b9b9b9',
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold'
   },
   resumo: {

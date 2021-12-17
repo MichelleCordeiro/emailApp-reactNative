@@ -5,7 +5,12 @@ import { FontAwesome5 } from '@expo/vector-icons'
 export default function Busca() {
   return (
     <View style={styles.busca}>
-      <FontAwesome5 name="bars" size={18} color="#d5d6d7" />
+      <FontAwesome5
+        name="bars"
+        size={18}
+        color="#d5d6d7"
+        onPress={() => alert('Futura Implementação ')}
+      />
       <Text style={styles.textoBusca}>Pesquisar no e-mail</Text>
       <Image style={styles.userLogado} source={require('../assets/images/userLogado.jpg')} />
     </View>

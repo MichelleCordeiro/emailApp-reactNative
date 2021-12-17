@@ -1,16 +1,26 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
 export default function Footer() {
   return (
     <View style={styles.footer}>
       <View style={styles.footerColuna}>
-        <FontAwesome5 style={styles.footerIconL} name="envelope" size={22} />
+        <FontAwesome5
+          style={styles.footerIconL}
+          name="envelope"
+          size={22}
+          onPress={() => alert('Futura Implementação ')}
+        />
         <Text style={styles.textoFooter}>E-mail</Text>
       </View>
       <View style={styles.footerColuna}>
-        <FontAwesome5 style={styles.footerIconR} name="video" size={20} />
+        <FontAwesome5
+          style={styles.footerIconR}
+          name="video"
+          size={20}
+          onPress={() => alert('Futura Implementação ')}
+        />
         <Text style={styles.textoFooter}>Reunião</Text>
       </View>
     </View>

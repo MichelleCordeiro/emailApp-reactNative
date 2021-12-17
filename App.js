@@ -13,7 +13,15 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="EmailScreen" component={EmailScreen} options={{ title: 'Email' }} />
+        <Stack.Screen
+          name="EmailScreen"
+          component={EmailScreen}
+          options={{
+            title: '',
+            headerStyle: { backgroundColor: '#1f1f1f' },
+            headerTintColor: '#f0f0f0'
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
